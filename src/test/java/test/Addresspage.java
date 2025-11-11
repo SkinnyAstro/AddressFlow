@@ -55,7 +55,7 @@ public class Addresspage {
 
         WebElement SearchField = driver.findElement(By.xpath("//input[@class='ant-input css-kghr11 ant-input-outlined sc-36d10bfa-0 kMjfNj custom-input']"));
         SearchField.click();
-        SearchField.sendKeys("Thane");
+        SearchField.sendKeys("Axis Bank");
     }
 
 
