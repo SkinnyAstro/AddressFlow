@@ -3,7 +3,11 @@ package test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class Addresspage {
@@ -11,6 +15,7 @@ public class Addresspage {
 
     String url = "https://d9fxpcoihxvhh.cloudfront.net/";
 
+    @Test
     public void invokeBrowser() throws InterruptedException {
         driver = new ChromeDriver(); //
         //driver.manage().window().maximize();
@@ -23,22 +28,28 @@ public class Addresspage {
         //WebElement Search = driver.findElement(By.id("searchInput"));
     }
 
+    @Test
     public void Login() throws InterruptedException {
 
         WebElement signup = driver.findElement(By.xpath("//button[@class='sc-b7e936f3-0 sc-5c16eb5d-0 dOqDEV fEYuDN' and text()='Login / Signup']"));
         signup.click();
 
         WebElement phone = driver.findElement(By.id("phone"));
-        phone.sendKeys("9004921226");
+        phone.sendKeys("8850843264");
 
         WebElement getOtp = driver.findElement(By.xpath("//button[@class='sc-b7e936f3-0 sc-c5c26131-0 dOqDEV bHIGnk sc-b1966d6e-9 inlkji']"));
         getOtp.click();
         Thread.sleep(20000);
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement cancel = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("wzrk-cancel")));
+        cancel.click();
+
 
 
     }
 
+    @Test
     public void AddressClick() throws InterruptedException{
         WebElement profilebutton = driver.findElement(By.xpath("//button[@class='sc-b7e936f3-0 sc-5c16eb5d-0 dOqDEV fEYuDN sc-b12414c9-0 kaPobC']"));
         profilebutton.click();
@@ -48,6 +59,7 @@ public class Addresspage {
         Addressbutton.click();
     }
 
+    @Test
     public void AddNewAddress() throws InterruptedException{
         WebElement Newaddress = driver.findElement(By.xpath("//button[@class='sc-b7e936f3-0 sc-7fd21e6d-0 dOqDEV hyKmTP sc-6bad1a2e-1 jFKKMk']"));
         Newaddress.click();
