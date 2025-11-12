@@ -45,7 +45,7 @@ public class Addresspage {
         signup.click();
 
         WebElement phone = driver.findElement(By.id("phone"));
-        phone.sendKeys("8850843264");
+        phone.sendKeys("9004921226");
 
         WebElement getOtp = driver.findElement(By.xpath("//button[@class='sc-b7e936f3-0 sc-c5c26131-0 dOqDEV bHIGnk sc-b1966d6e-9 inlkji']"));
         getOtp.click();
@@ -70,6 +70,9 @@ public class Addresspage {
 
     @Test
     public void AddNewAddress() throws InterruptedException{
+
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        WebDriverWait wait2 = new WebDriverWait(driver,Duration.ofSeconds(10));
         WebElement Newaddress = driver.findElement(By.xpath("//button[@class='sc-b7e936f3-0 sc-7fd21e6d-0 dOqDEV hyKmTP sc-6bad1a2e-1 jFKKMk']"));
         Newaddress.click();
         Thread.sleep(2000);
@@ -83,7 +86,24 @@ public class Addresspage {
         WebElement SelectAddress = driver.findElement(By.xpath("//div[@class='address-card-action'][1]"));
         SelectAddress.click();
 
+        //WebElement Addressline1 = driver.findElement(By.xpath("//input[@name='addressline1']"));
+        WebElement Addressline1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='addressline1']")));
+        Addressline1.sendKeys("Nakshatra Apartment");
 
+        WebElement others = driver.findElement(By.xpath("//button[@class='sc-b7e936f3-0 sc-7fd21e6d-0 dOqDEV hyKmTP sc-fb652a56-14 bMnPhC']"));
+        others.click();
+
+        WebElement addressType = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class='ant-input css-kghr11 ant-input-outlined'and @name='otherAddressType']")));
+        //addressType.click();
+        addressType.sendKeys("Test new");
+
+        WebElement SaveandContinue = driver.findElement(By.xpath("//button[@class='sc-b7e936f3-0 sc-c5c26131-0 dOqDEV bHIGnk']"));
+        SaveandContinue.click();
+    }
+
+    @Test
+    public void CloseBrowser(){
+        driver.close();
     }
 
 
@@ -94,6 +114,7 @@ public class Addresspage {
         ap.Login();
         ap.AddressClick();
         ap.AddNewAddress();
+        ap.CloseBrowser();
     }
 
 
