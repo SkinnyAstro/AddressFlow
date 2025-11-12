@@ -1,15 +1,22 @@
 package test;
 
+import dev.failsafe.internal.util.Durations;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class Addresspage {
     ChromeDriver driver;
 
     String url = "https://d9fxpcoihxvhh.cloudfront.net/";
+
+
 
     public void invokeBrowser() throws InterruptedException {
         driver = new ChromeDriver(); //
@@ -35,6 +42,12 @@ public class Addresspage {
         getOtp.click();
         Thread.sleep(20000);
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement cancel = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("wzrk-cancel")));
+        cancel.click();
+
+
+
 
 
     }
@@ -55,7 +68,12 @@ public class Addresspage {
 
         WebElement SearchField = driver.findElement(By.xpath("//input[@class='ant-input css-kghr11 ant-input-outlined sc-36d10bfa-0 kMjfNj custom-input']"));
         SearchField.click();
-        SearchField.sendKeys("Thane");
+        SearchField.sendKeys("Axis Bank");
+        Thread.sleep(2000);
+
+        WebElement SelectAddress = driver.findElement(By.xpath("//div[@class='address-card-action'][1]"));
+        SelectAddress.click();
+
     }
 
 
