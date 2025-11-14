@@ -12,7 +12,7 @@ public class BaseTest {
     protected WebDriver driver;
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
@@ -20,9 +20,10 @@ public class BaseTest {
 
     }
 
-    @AfterMethod
-    public void Teardown(){
-        driver.quit();
-    }
-
+//    @AfterMethod
+//    public void Teardown(){
+//        driver.quit();
+//    }
+//
+//
 }

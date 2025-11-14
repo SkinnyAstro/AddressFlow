@@ -13,7 +13,7 @@ public class CartTest extends BaseTest {
 
         CartPage cartPage = new CartPage(driver);
         cartPage.Addingmedicine();
-        cartPage.Addressfromcart();
+        //cartPage.Addressfromcart();
 
     }
 

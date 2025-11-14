@@ -1,9 +1,11 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CartPage extends BasePage {
 
@@ -31,6 +33,12 @@ public class CartPage extends BasePage {
     @FindBy(xpath = "//button[@class='sc-b7e936f3-0 sc-c5c26131-0 dOqDEV bHIGnk']")
     WebElement SaveandContinue;
 
+    @FindBy(id= "searchInput")
+    WebElement Searchbar;
+
+    @FindBy(xpath ="//p[@class='sc-c6e4ede0-3 cksWKu' and text()='Telmavas H Tablet 10']")
+    WebElement MedicineClick;
+
 
     public CartPage(WebDriver driver){
         super(driver);
@@ -42,7 +50,8 @@ public class CartPage extends BasePage {
 
 
     public void Addingmedicine(){
-
+    wait.until(ExpectedConditions.elementToBeClickable(Searchbar)).sendKeys("Telmavas H Tablet 10");
+    wait.until(ExpectedConditions.elementToBeClickable(MedicineClick)).click();
 
     }
 
