@@ -16,7 +16,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-        driver.get("https://d9fxpcoihxvhh.cloudfront.net/");
+        driver.get("https://www.truemeds.in/");
 
     }
 

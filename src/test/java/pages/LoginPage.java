@@ -16,6 +16,14 @@ public class LoginPage extends BasePage {
     @FindBy(id = "phone")
     private WebElement phone;
 
+    // Below is the production locator of the mobile login , it cannot be used on stage
+    @FindBy(xpath = "//input[@class='sc-ce6ba07b-6 iWuLHA']")
+    private WebElement mobilelogin;
+
+    // Below is the Getotp locator of production.
+    @FindBy(xpath="//button[@class='sc-ce6ba07b-7 jGFoUo']")
+    private WebElement prodOtp;
+
     @FindBy(xpath = "//button[@class='sc-b7e936f3-0 sc-c5c26131-0 dOqDEV bHIGnk sc-b1966d6e-9 inlkji']")
     private WebElement getOtp;
 
@@ -30,10 +38,12 @@ public class LoginPage extends BasePage {
 
     public void login(String phonenumber) throws InterruptedException{
         signup.click();
-        phone.sendKeys(phonenumber);
-        getOtp.click();
+        //phone.sendKeys(phonenumber);
+        mobilelogin.sendKeys(phonenumber); // this is the production locator and not of stage
+        prodOtp.click(); // Can only be used on prod website
+        //getOtp.click();
         Thread.sleep(10000); // manual wait for entering the otp
-        wait.until(ExpectedConditions.visibilityOf(cancel)).click();
+        //wait.until(ExpectedConditions.visibilityOf(cancel)).click();
     }
 
 }
